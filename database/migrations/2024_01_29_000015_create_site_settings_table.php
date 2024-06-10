@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('title')->nullable();
+            $table->string('email')->nullable();
             $table->text('description')->nullable();
             $table->text('menu_logo')->nullable();
             $table->text('favicon')->nullable();

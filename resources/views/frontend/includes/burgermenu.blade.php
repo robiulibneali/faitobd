@@ -10,14 +10,14 @@
                 <div class="box-lang">
                     {{-- <span onclick="changeLang('en','1')" class="active">EN</span>
                     <span onclick="changeLang('bn','1')" class="">BN</span> --}}
-                    <span onclick="changeLang('en')" class="{{ Session::has('locale') && Session::get('locale') == 'en' ? 'active' : ''}}">EN</span>
-                    <span onclick="changeLang('bn')" class="{{Session::has('locale') && Session::get('locale') == 'bn' ? 'active' : ''}}">BN</span>
+                    <span onclick="changeLang('en')" class="{{ !Session::has('locale') || Session::get('locale') == 'en' ? 'active' : ''}}">EN</span>
+                    <span onclick="changeLang('bn')" class="{{ Session::has('locale') && Session::get('locale') == 'bn' ? 'active' : ''}}">BN</span>
                 </div>
             </div>
             <div class="box wrap-drop">
                 <ul>
                     <li class="have-child">
-                        <a href="index.html#">{{ trans('frontend.menu.story') }}</a>
+                        <a href="javascript:void(0)">{{ trans('frontend.menu.story') }}</a>
                         <ul>
                             <li>
                                 <a class=""
@@ -81,7 +81,7 @@
                 </ul>
             </div>
             <div class="search">
-                <form action="https://faito.co.id/en/search">
+                <form action="{{ route('frontend.product-search') }}">
                     <input type="text" name="title" placeholder="Search Our Product">
                     <a class="link-yellow btn-adv-search">Advance Search</a>
                 </form>

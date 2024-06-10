@@ -1,14 +1,12 @@
 @extends('frontend.master')
 
-@section('title', 'Home')
-
 @section('body')
     <section class="content-landing detail">
         <div class="head-content">
             <div class="overlay-head-content"></div>
             <div class="result-product">
                 <div class="wrapper">
-                    <h4>Faito Lite-Tech Bearing</h4>
+                    <h4>{{ $subCategory->name ?? '' }}</h4>
                     <span class="result">Showing 1-4 of 4 Results</span>
                 </div>
             </div>
@@ -464,13 +462,16 @@
         </div>
         <div class="wrapper">
             <div class="listing-wrap product">
-                <a href="{{ route('frontend.product-details') }}" class="list">
-                    <figure>
-                        <img src="{{ asset('/') }}frontend/assets/contents/Xog8ScInqf.png" alt="">
-                    </figure>
-                    <span class="name-sparepart">Faito Lite-Tech Bearing</span>
-                    <h5>FAITO LITE-TECH BEARING SET</h5>
-                </a>
+                @foreach($products as $product)
+                    <a href="{{ route('frontend.product-details', ['id' => $product->id]) }}" class="list">
+                        <figure>
+                            <img src="{{ asset(!empty($product->main_image) ? $product->main_image : 'frontend/assets/contents/Xog8ScInqf.png') }}" alt="" />
+                        </figure>
+                        <span class="name-sparepart">{{ $product->partsBrandCategory->name }}</span>
+                        <h5>{{ $product->title ?? '' }}</h5>
+                    </a>
+                @endforeach
+
                 <a href="lite-tech-bearing/crankshaft-lite-tech-bearing.html" class="list">
                     <figure>
                         <img src="{{ asset('/') }}frontend/assets/contents/XZwCM69iov.png" alt="">

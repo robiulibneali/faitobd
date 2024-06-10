@@ -21,7 +21,6 @@
     <title>faitoinfo@gmail.com</title>
 </head>
 <body>
-    <h1>{{ $data['title'] }}</h1>
-    <p>Thanks for your message</p>
+    <span>{{ $data['name'] }} </span><span>send you this</span><span>{{ $data['message'] }} </span><span>from this</span><span>{{ $data['email'] }}</span><span>for faito.co.bd</span>
 </body>
 </html>

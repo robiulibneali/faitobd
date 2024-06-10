@@ -19,7 +19,13 @@ class ContactUs extends Mailable
      */
     public function __construct($data)
     {
+//        dd($data);
         $this->data = $data;
+    }
+
+    public function build()
+    {
+        return $this->view('emails.contact');
     }
 
     /**

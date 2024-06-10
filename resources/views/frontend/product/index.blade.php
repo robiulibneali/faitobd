@@ -31,7 +31,7 @@
             </div>
             <div class="box-grid">
                 @foreach($categories as $category)
-                    <a href="{{ route('frontend.sub-cat') }}" class="box">
+                    <a href="{{ route('frontend.sub-cat', ['parts_parent_brand_category_id' => $category->id, 'name' => str_replace(' ', '-', $category->name)]) }}" class="box">
                         <figure>
                         <img src="{{ asset(!empty($category->image) ? $category->image : 'frontend/assets/contents/rsQC1C7Fkq.png') }}" alt="" />
                         <figcaption>

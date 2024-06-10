@@ -31,8 +31,23 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name'          => 'required',
+            'email'         => 'email',
+            'mobile'        => ['required', 'numeric', 'regex:/^(?:\+88|01)?\d{11}$/'],
+            'workshop_info' => 'required',
+        ]);
+
+        $data = request()->validate([
+            'name'      => 'required|min:3',
+            'email'     => 'required|email',
+            'message'   => 'required|min:5',
+        ]);
+//        dd($data);
+        Mail::to('robiul.cam06071998@gmail.com')->send(new ContactUs($data));
+
         Contact::saveContact($request);
-        return back()->with('success', 'Send Message Successfully.');
+        return back()->with('success', 'Message Sent Successfully.');
     }
 
     /**
@@ -43,17 +58,10 @@ class ContactController extends Controller
         //
     }
 
-//    public function send()
-//    {
-//        $data = request()->validate([
-//            'name'      => 'required|min:3',
-//            'email'     => 'required|email',
-//            'message'   => 'required|min:5',
-//        ]);
-//        Mail::to('robiulibneali@gmail.com')->send(new ContactUs($data));
-//
-//        dd('sent');
-//    }
+    public function send()
+    {
+
+    }
 
     /**
      * Show the form for editing the specified resource.

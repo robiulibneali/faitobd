@@ -62,14 +62,13 @@
         </ul>
     </nav>
     <div class="box-lang">
-        <span onclick="changeLang('en')" class="{{ Session::has('locale') && Session::get('locale') == 'en' ? 'active' : ''}}">EN</span>
+        <span onclick="changeLang('en')" class="{{ !Session::has('locale') || Session::get('locale') == 'en' ? 'active' : ''}}">EN</span>
         <span onclick="changeLang('bn')" class="{{Session::has('locale') && Session::get('locale') == 'bn' ? 'active' : ''}}">BN</span>
     </div>
     <div class="box-search">
         <span class="icon-search"><img src="{{ asset('/') }}frontend/assets/images/material/ic-search.png" alt=""></span>
         <span class="icon-search black"><img src="{{ asset('/') }}frontend/assets/images/material/ic-search-bl.png" alt=""></span>
         <div class="search-box">
-
         </div>
     </div>
 </div>

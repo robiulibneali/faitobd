@@ -4,18 +4,15 @@
             <a
                 target="_self"
                 href="{{ route('frontend.home') }}">
-                <img src="{{ asset('/') }}frontend/assets/contents/4dVXEf6gSg.png"
-                     alt=""></a>
-            <a
+                <img src="{{ asset('/') }}frontend/assets/contents/4dVXEf6gSg.png" alt="" />
+            </a>
+            @foreach($partsParentBrands as $partsParentBrand)
+                <a
                 target="_self"
-                href="{{ route('frontend.product-search') }}">
-                <img src="{{ asset('/') }}frontend/assets/contents/Xuczl0Gp6S.svg"
-                     alt=""></a>
-            <a
-                target="_self"
-                href="{{ route('frontend.product-search') }}">
-                <img src="{{ asset('/') }}frontend/assets/contents/pyvI3XbF6c.svg"
-                     alt=""></a>
+                href="{{ route('frontend.product-search', ['brand_id' => $partsParentBrand->id]) }}">
+                    <img src="{{ asset(!empty($partsParentBrand->logo) ? $partsParentBrand->logo : 'frontend/assets/contents/Xuczl0Gp6S.svg') }}" alt="" style="height: 35px;" />
+                </a>
+            @endforeach
         </div>
         <div class="logo black">
             <a
@@ -23,19 +20,16 @@
                 href="{{ route('frontend.home') }}">
                 <img src="{{ asset('/') }}frontend/assets/contents/mwCf0qfJ80.svg"
                      alt=""></a>
-            <a
+            @foreach($partsParentBrands as $partsParentBrand)
+                <a
                 target="_self"
-                href="{{ route('frontend.product-search') }}">
-                <img src="{{ asset('/') }}frontend/assets/contents/QQLuesY68Q.svg"
-                     alt=""></a>
-            <a
-                target="_self"
-                href="{{ route('frontend.product-search') }}">
-                <img src="{{ asset('/') }}frontend/assets/contents/x1ea8i9Hqc.svg"
-                     alt=""></a>
+                href="{{ route('frontend.product-search', ['brand_id' => $partsParentBrand->id]) }}">
+                        <img src="{{ asset(!empty($partsParentBrand->logo) ? $partsParentBrand->logo : 'frontend/assets/contents/Xuczl0Gp6S.svg') }}" alt="" style="height: 35px;" />
+                </a>
+            @endforeach
         </div>
         @include('frontend.includes.right-header')
-        <div class="togglemenu">
+        <div class="togglemenu" {{--data-bs-toggle=""--}}>
             <span></span>
             <span></span>
             <span></span>

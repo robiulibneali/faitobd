@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('frontend.includes.header', function ($view) {
             $view->with([
-                'partsParentBrands'     => PartsParentBrand::where('status', 1)->select('id', 'name')->get(),
+                'partsParentBrands'     => PartsParentBrand::where('status', 1)->select('id', 'name', 'logo')->get(),
                 'siteSettings'          => SiteSetting::all(),
             ]);
         });

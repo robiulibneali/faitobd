@@ -18,8 +18,8 @@ class HomeController extends Controller
     public function home()
     {
         return view('frontend.home.index', [
-            'blogs'             => Blog::where('status', 1)->take(4)->select('id', 'title', 'blog_category_id', 'image', 'created_at')->get(),
-            'homePageSliders'   => HomePageSlider::where('status', 1)->take(10)->select('id', 'slider_file_type', 'file')->get(),
+            'blogs'             => Blog::where('status', 1)->take(4)->select('id', 'title', 'blog_category_id', 'image', 'created_at')->latest()->get(),
+            'homePageSliders'   => HomePageSlider::where('status', 1)->select('id', 'slider_file_type', 'file')->get(),
             'siteSettings'      => SiteSetting::all(),
             'bikeMotorTypes'    => BikeMotorType::where('status', 1)->select('id', 'name', 'image')->latest()->get(),
         ]);
@@ -28,7 +28,8 @@ class HomeController extends Controller
     public function contact()
     {
         return view('frontend.contact.index', [
-            'motorType' => BikeMotorType::where('status', 1)->select('id', 'name')->get(),
+            'motorType'     => BikeMotorType::where('status', 1)->select('id', 'name')->get(),
+            'siteSettings'  => SiteSetting::all(),
         ]);
     }
 
@@ -64,7 +65,7 @@ class HomeController extends Controller
     public function blog()
     {
         return view('frontend.story.news.index',[
-            'blogs' => Blog::where('status', 1)->select('id', 'blog_category_id', 'title', 'image', 'created_at')->get(),
+            'blogs' => Blog::where('status', 1)->select('id', 'blog_category_id', 'title', 'image', 'created_at')->latest()->get(),
         ]);
     }
 
@@ -77,7 +78,5 @@ class HomeController extends Controller
             'relatedBlogs'  => $this->blogs,
         ]);
     }
-
-
 
 }

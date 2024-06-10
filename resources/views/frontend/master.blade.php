@@ -18,7 +18,9 @@
 
     <script>
         const BASEURL = "{!! url('/') !!}" + '/';
-
+        function changeLang(lang){
+            window.location = BASEURL+"change-language/"+lang ;
+        }
     </script>
     @include('frontend.includes.assets.script')
     <!--endbuild-->

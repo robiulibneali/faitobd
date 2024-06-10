@@ -9,19 +9,19 @@
     <div class="wrapper">
         <div class="left-foot">
             <div class="box">
-                <a href="#" class="logo-foot"><img src="{{ asset('/') }}frontend/assets/contents/vVGqW50UMC.svg" alt=""></a>
+                <a href="#" class="logo-foot"><img src="{{ asset(!empty($siteSetting->footer_logo) ? $siteSetting->footer_logo : 'frontend/assets/contents/vVGqW50UMC.svg') }}" alt=""></a>
             </div>
             <div class="box">
-                <h6>PT FAITO RACING DEVELOPMENT INDONESIA</h6>
-                <p><b>Head Office :</b>The Boulevard No. 53
-                    Jakarta Garden City
-                    Jakarta Timur 13910</p>
+                <h6>PT FAITO RACING DEVELOPMENT</h6>
+                @foreach($siteSettings as $siteSetting)
+                    <p>{!! $siteSetting->description !!}</p>
+                @endforeach
             </div>
             <div class="box">
                 @foreach($siteSettings as $siteSetting)
                 <span>T. <a href="tel:{{ $siteSetting->helpline_number }}">{{ $siteSetting->helpline_number }}</a></span>
                 @endforeach
-                <span>E. <a href="mailto:customercare@faito.co.id">customercare@faito.co.id</a></span>
+                <span>E. <a href="mailto:{{ $siteSetting->email }}">{{ $siteSetting->email }}</a></span>
             </div>
         </div>
         <div class="right-foot">
@@ -65,15 +65,15 @@
             </div>
             <div class="medsos-foot">
                 @foreach($siteSettings as $siteSetting)
-                <a href="{{ $siteSetting->fb_link ?? '' }}" rel="nofollow" target="_blank"><img src="{{ asset('/') }}frontend/assets/contents/DL94PSMnkG.png" alt=""></a>
-                <a href="{{ $siteSetting->tiktok_link ?? '' }}" rel="nofollow" target="_blank"><img src="{{ asset('/') }}frontend/assets/contents/G6cXnP7XQs.png" alt=""></a>
-                <a href="{{ $siteSetting->insta_link ?? '' }}" rel="nofollow" target="_blank"><img src="{{ asset('/') }}frontend/assets/contents/8kSM0H9toL.png" alt=""></a>
-                <a href="{{ $siteSetting->youtube_link ?? '' }}" rel="nofollow" target="_blank"><img src="{{ asset('/') }}frontend/assets/contents/lLW3VdDELH.png" alt=""></a>
+                    <a href="{{ $siteSetting->fb_link ?? '' }}" rel="nofollow" target="_blank"><img src="{{ asset('/') }}frontend/assets/contents/DL94PSMnkG.png" alt=""></a>
+                    <a href="{{ $siteSetting->tiktok_link ?? '' }}" rel="nofollow" target="_blank"><img src="{{ asset('/') }}frontend/assets/contents/G6cXnP7XQs.png" alt=""></a>
+                    <a href="{{ $siteSetting->insta_link ?? '' }}" rel="nofollow" target="_blank"><img src="{{ asset('/') }}frontend/assets/contents/8kSM0H9toL.png" alt=""></a>
+                    <a href="{{ $siteSetting->youtube_link ?? '' }}" rel="nofollow" target="_blank"><img src="{{ asset('/') }}frontend/assets/contents/lLW3VdDELH.png" alt=""></a>
                 @endforeach
             </div>
         </div>
     </div>
     <div class="bottom-foot">
-        <p>Copyrights {{ date('Y') }} © PT Faito Racing Development Indonesia.  All Rights Reserved</p>
+        <p>Copyrights {{ date('Y') }} © PT Faito Racing Development.  All Rights Reserved</p>
     </div>
 </footer>

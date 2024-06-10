@@ -3,6 +3,7 @@
 namespace App\Models\Backend\BikeManagement;
 
 use App\Models\Backend\AdditionalFeatures\Testimonial;
+use App\Models\Backend\PartsManagement\PartsProduct;
 use App\Models\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -92,8 +93,8 @@ class MotorBike extends Model
         return $this->belongsTo(BikeYearVersion::class);
     }
 
-    // public function partsProducts()
-    // {
-    //     return $this->belongsToMany(PartsProduct::class);
-    // }
+     public function partsProducts()
+     {
+         return $this->belongsToMany(PartsProduct::class);
+     }
 }

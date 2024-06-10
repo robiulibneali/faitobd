@@ -69,7 +69,7 @@
                                             </div>
                                         </td>
                                         <td>{{ $partsProduct->status == 1 ? 'Published' : 'Unpublished' }}</td>
-                                        <td class="d-flex">
+                                        <td class="responsive-table-data">
                                             <a href="{{ route('admin.parts-products.edit', $partsProduct->id) }}"
                                                class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                             <form action="{{ route('admin.parts-products.destroy', $partsProduct->id) }}"

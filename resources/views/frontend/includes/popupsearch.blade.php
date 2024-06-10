@@ -3,7 +3,7 @@
         <span></span><span></span>
     </div>
     <div class="box-inner-search normal-search active">
-        <form action="https://faito.co.id/en/search">
+        <form action="{{ route('frontend.product-search') }}">
             <input type="text" name="title" placeholder="Search Our Product">
             <a class="link-yellow btn-adv-search">Advance Search</a>
         </form>
@@ -11,7 +11,7 @@
     <div class="box-inner-search advance-search">
         <h3>Advance Search</h3>
         <div class="form">
-            <form action="https://faito.co.id/en/search">
+            <form action="{{ route('frontend.product-search') }}">
                 <div class="row">
                     <div class="col half">
                         <div class="row">

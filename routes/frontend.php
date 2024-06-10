@@ -17,10 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::name('frontend.')->group(function (){
+Route::/*prefix('{lang?}')->*/name('frontend.')->group(function (){
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-//    Route::post('/kontacts', [ContactController::class, 'send'])->name('contact.send');
     Route::resource('contacts', ContactController::class);
     Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
     Route::get('/story/faitology', [HomeController::class, 'faitology'])->name('faitology');
@@ -42,12 +41,24 @@ Route::name('frontend.')->group(function (){
         return redirect()->back();
     })->name('language-change');
 
+
+    Route::get('/motor-brand/item/{bike_motor_type_id}/{bike_brand_name?}', [HomeProductController::class, 'bikeBrand'])->name('bike-brands');
+    Route::get('/motor-brand/models/{bike_brand_id}/{brand_name?}', [HomeProductController::class, 'bike'])->name('category-wise-bikes');
+
+
+
+    Route::get('/sub-product/detail/{sub_category_id}/{name?}', [HomeProductController::class, 'subSubCat'])->name('sub-sub-cat');
+    Route::get('/product/details/{id}/{slug?}', [HomeProductController::class, 'productDetails'])->name('product-details');
+    Route::get('/search', [HomeProductController::class, 'productSearch'])->name('product-search');
+
+
+//    customized
     Route::get('/product/{brand_id}/{name?}', [HomeProductController::class, 'product'])->name('product');
-    Route::get('/product/detail/subCat', [HomeProductController::class, 'subCat'])->name('sub-cat');
-    Route::get('/product/detail/subSubCat', [HomeProductController::class, 'subSubCat'])->name('sub-sub-cat');
-    Route::get('/product/detail/{id}/{slug?}', [HomeProductController::class, 'productDetails'])->name('product-details');
-    Route::get('/search/productSearch', [HomeProductController::class, 'productSearch'])->name('product-search');
+    Route::get('/category-wise-products/{parts_parent_brand_category_id}/{name?}', [HomeProductController::class, 'subCat'])->name('sub-cat');
 });
+
+
+
 
 
 Route::middleware([

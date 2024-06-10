@@ -14,6 +14,7 @@ class SiteSetting extends Model
     protected $fillable = [
         'name',
         'title',
+        'email',
         'description',
         'menu_logo',
         'favicon',
@@ -36,6 +37,7 @@ class SiteSetting extends Model
         SiteSetting::updateOrCreate(['id' => $id], [
             'name'                 => $request->name,
             'title'                => $request->title,
+            'email'                => $request->email,
             'description'          => $request->description,
             'helpline_number'      => $request->helpline_number,
             'default_seo_header'   => $request->default_seo_header,

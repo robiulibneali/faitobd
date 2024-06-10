@@ -49,10 +49,13 @@ class Contact extends Model
         ]);
 
         $data = [
-            'title' => 'Mail from faitoinfo@gmail.com'
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'message'   => $request->message,
         ];
 
-        Mail::to($request->email)->send(new ContactUs($data));
+//        Mail::to($request->email)->send(new ContactUs($data));
+//        Mail::to('robiul.cam06071998@gmail.com')->send(new ContactUs($data));
     }
     public function bikeMotorType()
     {

@@ -35,22 +35,22 @@
                 <div class="related-news">
                     <div class="wrap-flex">
                         <span class="sub">{{ trans('frontend.story.blog_details.related_news') }}</span>
-                        <a href="{{ route('frontend.blog') }}" class="btn-arr back">{{ trans('frontend.story.blog_details.back_to_news_list') }}</a>
+                        <a href="{{ route('frontend.blog', ['lang' => app()->getLocale()]) }}" class="btn-arr back">{{ trans('frontend.story.blog_details.back_to_news_list') }}</a>
                     </div>
                     <div class="listing-wrap related">
                         @foreach($relatedBlogs as $relatedBlog)
                             <a href="{{ route('frontend.blog-details', ['blog_id' => $relatedBlog->id, 'titile' => str_replace(' ', '-', $relatedBlog->title)]) }}" class="list">
-                            <figure>
-                                <img src="{{ asset(!empty($relatedBlog->image) ? $relatedBlog->image : 'frontend/assets/contents/ooLZTrU9bo.jpg') }}" alt="">
-                            </figure>
-                            <div class="text">
-                                <h6>{{ $relatedBlog->title ?? '' }}</h6>
-                                <div class="caption-small">
-                                    <span>{{ $relatedBlog->blogCategory->name }}</span>
-                                    <span class="date">{{ $relatedBlog->created_at->format('d M Y') }}</span>
+                                <figure>
+                                    <img src="{{ asset(!empty($relatedBlog->image) ? $relatedBlog->image : 'frontend/assets/contents/ooLZTrU9bo.jpg') }}" alt="">
+                                </figure>
+                                <div class="text">
+                                    <h6>{{ $relatedBlog->title ?? '' }}</h6>
+                                    <div class="caption-small">
+                                        <span>{{ $relatedBlog->blogCategory->name }}</span>
+                                        <span class="date">{{ $relatedBlog->created_at->format('d M Y') }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
                         @endforeach
                     </div>
                 </div>

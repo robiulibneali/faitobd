@@ -105,20 +105,20 @@
             <div class="box-slider-product-home anim-from-bottom" trigger-anim=".trigger-product" delay="0.7">
                 <div class="slider-product-home">
                     @foreach($bikeMotorTypes as $bikeMotorType)
-                        <a href="#" class="list">
-                        <figure>
-                            <img src="{{ asset(!empty($bikeMotorType->image) ? $bikeMotorType->image : 'frontend/assets/contents/cn62IBPq8M.png') }}" alt="Matic">
-                            <figcaption>
-                                <h5>{{ $bikeMotorType->name ?? '' }}</h5>
-                            </figcaption>
-                        </figure>
-                    </a>
+                        <a href="{{ route('frontend.bike-brands', ['bike_motor_type_id' => $bikeMotorType->id, 'bike_brand_name' => str_replace(' ', '-', $bikeMotorType->name)]) }}" class="list">
+                            <figure>
+                                <img src="{{ asset(!empty($bikeMotorType->image) ? $bikeMotorType->image : 'frontend/assets/contents/cn62IBPq8M.png') }}" alt="Matic">
+                                <figcaption>
+                                    <h5>{{ $bikeMotorType->name ?? '' }}</h5>
+                                </figcaption>
+                            </figure>
+                        </a>
                     @endforeach
                 </div>
                 <div class="indicator-slider">
-        <span class="number-slider">
-          <span class="number-in-slider">01</span> of <span class="count-in-slider">5</span>
-        </span>
+                    <span class="number-slider">
+                      <span class="number-in-slider">01</span> of <span class="count-in-slider">5</span>
+                    </span>
                     <div class="line-indicator-slider">
                         <span></span>
                     </div>
@@ -151,13 +151,13 @@
                 </a>
                 <div class="right-list anim-from-bottom" trigger-anim=".trigger-news" delay="0.8">
                     @foreach($blogs->skip(1) as $blog)
-                        <a href="{{ route('frontend.blog-details', ['blog_id' => $blog->id, 'titile' => str_replace(' ', '-', $blog->title)]) }}" class="list">
-                            <figure>
-                                <img src="{{ asset(!empty($blog->image) ? $blog->image : 'frontend/assets/contents/uyynP93oEV.jpg') }}" alt="" style="width: 177px; height: 101px" />
+                        <a href="{{ route('frontend.blog-details', ['blog_id' => $blog->id, 'titile' => str_replace(' ', '-', $blog->title)]) }}" class="list row" style="width: 100%">
+                            <figure class="me-5 col-6">
+                                <img src="{{ asset(!empty($blog->image) ? $blog->image : 'frontend/assets/contents/uyynP93oEV.jpg') }}" alt="" style="height: 140.19px" />
                             </figure>
-                            <div class="text">
+                            <div class="text ms-6 col-6">
                                 <p>{{ $blog->title ?? '' }}</p>
-                                <div class="caption-small me-5">
+                                <div class="caption-small">
                                     <span>{{ $blog->blogCategory->name ?? '' }}</span>
                                     <span class="date">{{ $blog->created_at->format('d M Y') ?? '' }}</span>
                                 </div>

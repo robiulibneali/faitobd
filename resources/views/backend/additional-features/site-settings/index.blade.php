@@ -16,21 +16,28 @@
                             @method('put')
                         @endif
                         <div class="row mt-5">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="" class="">Name</label>
                                 <div class="">
                                     <input type="text" name="name" class="form-control" value="{{ isset($siteSettings) ? $siteSettings->name : old('name') }}" placeholder="Name" />
                                     @error('name') <span class="text-danger">{{ $message }}</span>@enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="">Title</label>
                                 <div class="">
                                     <input type="text" name="title" class="form-control" value="{{ isset($siteSettings) ? $siteSettings->title : old('title') }}" placeholder="Site Title" />
                                     @error('title') <span class="text-danger">{{ $message }}</span>@enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <label for="">Email</label>
+                                <div>
+                                    <input type="email" name="email" class="form-control" value="{{ isset($siteSettings) ? $siteSettings->email : old('email') }}" placeholder="Email" />
+                                    @error('email') <span class="text-danger">{{ $message }}</span>@enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <label for="">Helpline Number</label>
                                 <div>
                                     <input type="text" name="helpline_number" class="form-control" value="{{ isset($siteSettings) ? $siteSettings->helpline_number : old('helpline_number') }}" placeholder="Helpline Number" />
@@ -40,7 +47,7 @@
                         </div>
 
                         <div class="row mt-5">
-                            <label for="">Description</label>
+                            <label for="">Office Address</label>
                             <div id="">
                                 <textarea name="description" class="form-control ckeditor"  placeholder="Site Description">{{ isset($siteSettings) ? $siteSettings->description : old('description') }}</textarea>
                                 @error('description') <span class="text-danger">{{ $message }}</span>@enderror
